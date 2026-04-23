@@ -3,25 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Simple Diary</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h2>Simple Diary Application</h2>
 
-<form action="diary" method="post">
-    <label>Title:</label><br>
-    <input type="text" name="title"><br><br>
+<div class="container">
+    <h2>Simple Diary</h2>
 
-    <label>Date:</label><br>
-    <input type="date" name="date"><br><br>
+    <form action="diary" method="post">
+        <label>Title:</label>
+        <input type="text" name="title">
 
-    <label>Author:</label><br>
-    <input type="text" name="author"><br><br>
+        <label>Date:</label>
+        <input type="date" name="date">
 
-    <label>Content:</label><br>
-    <textarea name="content" rows="5" cols="30"></textarea><br><br>
+        <label>Author:</label>
+        <input type="text" name="author">
 
-    <input type="submit" value="Submit Diary">
-</form>
+        <label>Content:</label>
+        <textarea name="content" rows="5"></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
 
 </body>
 </html>
