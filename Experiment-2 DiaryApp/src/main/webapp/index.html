@@ -2,28 +2,53 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Simple Diary</title>
+    <title>Smart Diary</title>
     <link rel="stylesheet" href="style.css">
+
+    <script>
+        function countChars() {
+            let content = document.getElementById("content");
+            let counter = document.getElementById("counter");
+            counter.innerText = content.value.length + "/200";
+        }
+    </script>
 </head>
+
 <body>
 
 <div class="container">
-    <h2>Simple Diary</h2>
+    <h1>📔 Smart Diary</h1>
 
     <form action="diary" method="post">
-        <label>Title:</label>
-        <input type="text" name="title">
 
-        <label>Date:</label>
-        <input type="date" name="date">
+        <label>Title</label>
+        <input type="text" name="title" required>
 
-        <label>Author:</label>
+        <label>Date</label>
+        <input type="date" name="date" required>
+
+        <label>Author</label>
         <input type="text" name="author">
 
-        <label>Content:</label>
-        <textarea name="content" rows="5"></textarea>
+        <label>Mood</label>
+        <select name="mood">
+            <option>😊 Happy</option>
+            <option>😢 Sad</option>
+            <option>😡 Angry</option>
+            <option>😴 Tired</option>
+            <option>🤩 Excited</option>
+        </select>
 
-        <button type="submit">Submit</button>
+        <label>Weather</label>
+        <input type="text" name="weather" placeholder="e.g. Sunny, Rainy">
+
+        <label>Content</label>
+        <textarea id="content" name="content" maxlength="200"
+                  onkeyup="countChars()" required></textarea>
+        <div id="counter">0/200</div>
+
+        <button type="submit">Save Diary</button>
+
     </form>
 </div>
 
