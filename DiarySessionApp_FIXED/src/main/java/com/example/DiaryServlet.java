@@ -1,4 +1,3 @@
-
 package com.example;
 
 import jakarta.servlet.ServletException;
@@ -23,6 +22,7 @@ public class DiaryServlet extends HttpServlet {
 
         PrintWriter out = response.getWriter();
 
+        // Read session
         HttpSession session = request.getSession(false);
 
         String username = null;
@@ -32,40 +32,86 @@ public class DiaryServlet extends HttpServlet {
         }
 
         out.println("<html>");
+
+        out.println("<head>");
+        out.println("<title>Diary List</title>");
+        out.println("<link rel='stylesheet' href='css/style.css'>");
+        out.println("</head>");
+
         out.println("<body>");
 
-        out.println("<h2>Diary List</h2>");
+        out.println("<div class='container'>");
+        out.println("<div class='login-card'>");
 
+        out.println("<h1>Diary List</h1>");
+
+        // User info
         if (username != null) {
 
-            out.println("<p>Welcome: " + username + "</p>");
-            out.println("<a href='logout'>Logout</a><br><br>");
+            out.println("<p class='subtitle'>Welcome, <b>"
+                    + username + "</b></p>");
+
+            out.println("<a href='logout' " +
+                    "style='color:red;text-decoration:none;font-weight:bold;'>");
+            out.println("Logout</a><br><br>");
 
         } else {
 
-            out.println("<p>User not logged in.</p>");
-            out.println("<a href='login.html'>Login</a><br><br>");
+            out.println("<p class='subtitle'>Please login first.</p>");
+
+            out.println("<a href='login.html' " +
+                    "style='text-decoration:none;color:#243b55;font-weight:bold;'>");
+            out.println("Login</a><br><br>");
         }
 
-        out.println("<ul>");
+        // Diary List
+        out.println("<ul style='list-style:none;'>");
 
-        out.println("<li>Diary Record 1");
+        out.println("<li style='background:#f1f1f1;" +
+                "padding:15px;margin:10px 0;border-radius:10px;'>");
 
+        out.println("Diary Record 1");
+
+        // Delete button only after login
         if (username != null) {
-            out.println(" <button>Delete</button>");
+
+            out.println("<button style='margin-left:15px;" +
+                    "padding:8px 14px;" +
+                    "border:none;" +
+                    "border-radius:8px;" +
+                    "background:red;" +
+                    "color:white;" +
+                    "cursor:pointer;'>");
+
+            out.println("Delete</button>");
         }
 
         out.println("</li>");
 
-        out.println("<li>Diary Record 2");
+        out.println("<li style='background:#f1f1f1;" +
+                "padding:15px;margin:10px 0;border-radius:10px;'>");
+
+        out.println("Diary Record 2");
 
         if (username != null) {
-            out.println(" <button>Delete</button>");
+
+            out.println("<button style='margin-left:15px;" +
+                    "padding:8px 14px;" +
+                    "border:none;" +
+                    "border-radius:8px;" +
+                    "background:red;" +
+                    "color:white;" +
+                    "cursor:pointer;'>");
+
+            out.println("Delete</button>");
         }
 
         out.println("</li>");
 
         out.println("</ul>");
+
+        out.println("</div>");
+        out.println("</div>");
 
         out.println("</body>");
         out.println("</html>");
