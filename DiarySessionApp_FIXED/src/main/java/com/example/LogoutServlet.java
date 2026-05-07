@@ -14,16 +14,12 @@ public class LogoutServlet extends HttpServlet {
                          HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Read session
         HttpSession session = request.getSession(false);
 
         if (session != null) {
-
-            // Destroy session
             session.invalidate();
         }
 
-        // Redirect to diary page
         response.sendRedirect("diary");
     }
 }
