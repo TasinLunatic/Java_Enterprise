@@ -1,25 +1,46 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diary Login</title>
+
+    <link rel="stylesheet" href="./style.css">
+
 </head>
 <body>
 
-<h2>Diary Login</h2>
+<div class="container">
 
-<form action="login" method="post">
+    <div class="login-card">
 
-    Username:
-    <input type="text" name="username"><br><br>
+        <h1>Diary System</h1>
 
-    Password:
-    <input type="password" name="password"><br><br>
+        <p class="subtitle">
+            Login to continue
+        </p>
 
-    <input type="submit" value="Login">
+        <form action="login" method="post">
 
-</form>
+            <input type="text"
+                   name="username"
+                   placeholder="Enter Username"
+                   required>
+
+            <input type="password"
+                   name="password"
+                   placeholder="Enter Password"
+                   required>
+
+            <button type="submit">
+                Login
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
 
 </body>
 </html>
