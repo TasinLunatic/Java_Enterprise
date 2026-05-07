@@ -2,10 +2,7 @@ package com.example;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -35,7 +32,10 @@ public class DiaryServlet extends HttpServlet {
 
         out.println("<head>");
         out.println("<title>Diary List</title>");
-        out.println("<link rel='stylesheet' href='css/style.css'>");
+
+        // Connect CSS
+        out.println("<link rel='stylesheet' href='style.css'>");
+
         out.println("</head>");
 
         out.println("<body>");
@@ -45,70 +45,67 @@ public class DiaryServlet extends HttpServlet {
 
         out.println("<h1>Diary List</h1>");
 
-        // User info
-        if (username != null) {
+        // BEFORE LOGIN
+        if (username == null) {
 
-            out.println("<p class='subtitle'>Welcome, <b>"
-                    + username + "</b></p>");
+            out.println("<p class='subtitle'>Please login first</p>");
 
-            out.println("<a href='logout' " +
-                    "style='color:red;text-decoration:none;font-weight:bold;'>");
-            out.println("Logout</a><br><br>");
+            out.println("<a href='login.html' " +
+                    "style='text-decoration:none;" +
+                    "font-weight:bold;" +
+                    "color:#243b55;'>");
+
+            out.println("Login</a><br><br>");
 
         } else {
 
-            out.println("<p class='subtitle'>Please login first.</p>");
+            // AFTER LOGIN
+            out.println("<p class='subtitle'>Welcome, <b>"
+                    + username + "</b></p>");
 
-            out.println("<a href='login.html' " +
-                    "style='text-decoration:none;color:#243b55;font-weight:bold;'>");
-            out.println("Login</a><br><br>");
+            // USERNAME DISPLAY
+            out.println("<a href='logout' " +
+                    "style='text-decoration:none;" +
+                    "font-weight:bold;" +
+                    "color:red;'>");
+
+            out.println("Logout</a><br><br>");
         }
 
-        // Diary List
-        out.println("<ul style='list-style:none;'>");
-
-        out.println("<li style='background:#f1f1f1;" +
-                "padding:15px;margin:10px 0;border-radius:10px;'>");
+        // Diary Record 1
+        out.println("<div style='background:#f1f1f1;" +
+                "padding:15px;" +
+                "margin:10px 0;" +
+                "border-radius:10px;'>");
 
         out.println("Diary Record 1");
 
-        // Delete button only after login
+        // DELETE BUTTON VISIBLE AFTER LOGIN
         if (username != null) {
 
-            out.println("<button style='margin-left:15px;" +
-                    "padding:8px 14px;" +
-                    "border:none;" +
-                    "border-radius:8px;" +
-                    "background:red;" +
-                    "color:white;" +
-                    "cursor:pointer;'>");
-
-            out.println("Delete</button>");
+            out.println("<button style='margin-top:10px;'>");
+            out.println("Delete");
+            out.println("</button>");
         }
 
-        out.println("</li>");
+        out.println("</div>");
 
-        out.println("<li style='background:#f1f1f1;" +
-                "padding:15px;margin:10px 0;border-radius:10px;'>");
+        // Diary Record 2
+        out.println("<div style='background:#f1f1f1;" +
+                "padding:15px;" +
+                "margin:10px 0;" +
+                "border-radius:10px;'>");
 
         out.println("Diary Record 2");
 
         if (username != null) {
 
-            out.println("<button style='margin-left:15px;" +
-                    "padding:8px 14px;" +
-                    "border:none;" +
-                    "border-radius:8px;" +
-                    "background:red;" +
-                    "color:white;" +
-                    "cursor:pointer;'>");
-
-            out.println("Delete</button>");
+            out.println("<button style='margin-top:10px;'>");
+            out.println("Delete");
+            out.println("</button>");
         }
 
-        out.println("</li>");
-
-        out.println("</ul>");
+        out.println("</div>");
 
         out.println("</div>");
         out.println("</div>");
