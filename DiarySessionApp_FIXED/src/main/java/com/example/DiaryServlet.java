@@ -19,7 +19,6 @@ public class DiaryServlet extends HttpServlet {
 
         PrintWriter out = response.getWriter();
 
-        // Read session
         HttpSession session = request.getSession(false);
 
         String username = null;
@@ -31,81 +30,49 @@ public class DiaryServlet extends HttpServlet {
         out.println("<html>");
 
         out.println("<head>");
-        out.println("<title>Diary List</title>");
-
-        // Connect CSS
+        out.println("<title>Smart Diary</title>");
         out.println("<link rel='stylesheet' href='style.css'>");
-
         out.println("</head>");
 
         out.println("<body>");
 
-        out.println("<div class='container'>");
-        out.println("<div class='login-card'>");
+        out.println("<div class='navbar'>");
+        out.println("<div class='logo'>Smart Diary</div>");
 
-        out.println("<h1>Diary List</h1>");
+        out.println("<div class='user-area'>");
 
-        // BEFORE LOGIN
-        if (username == null) {
+        if (username != null) {
 
-            out.println("<p class='subtitle'>Please login first</p>");
+            out.println("<span>Welcome, " + username + "</span>");
 
-            out.println("<a href='login.html' " +
-                    "style='text-decoration:none;" +
-                    "font-weight:bold;" +
-                    "color:#243b55;'>");
-
-            out.println("Login</a><br><br>");
+            out.println("<a class='logout-btn' href='logout'>Logout</a>");
 
         } else {
 
-            // AFTER LOGIN
-            out.println("<p class='subtitle'>Welcome, <b>"
-                    + username + "</b></p>");
-
-            // USERNAME DISPLAY
-            out.println("<a href='logout' " +
-                    "style='text-decoration:none;" +
-                    "font-weight:bold;" +
-                    "color:red;'>");
-
-            out.println("Logout</a><br><br>");
-        }
-
-        // Diary Record 1
-        out.println("<div style='background:#f1f1f1;" +
-                "padding:15px;" +
-                "margin:10px 0;" +
-                "border-radius:10px;'>");
-
-        out.println("Diary Record 1");
-
-        // DELETE BUTTON VISIBLE AFTER LOGIN
-        if (username != null) {
-
-            out.println("<button style='margin-top:10px;'>");
-            out.println("Delete");
-            out.println("</button>");
+            out.println("<a class='login-link' href='login.html'>Login</a>");
         }
 
         out.println("</div>");
-
-        // Diary Record 2
-        out.println("<div style='background:#f1f1f1;" +
-                "padding:15px;" +
-                "margin:10px 0;" +
-                "border-radius:10px;'>");
-
-        out.println("Diary Record 2");
-
-        if (username != null) {
-
-            out.println("<button style='margin-top:10px;'>");
-            out.println("Delete");
-            out.println("</button>");
-        }
-
         out.println("</div>");
+
+        out.println("<div class='container'>");
+
+        out.println("<div class='diary-grid'>");
+
+        for (int i = 1; i <= 6; i++) {
+
+            out.println("<div class='diary-card'>");
+
+            out.println("<h3>Diary Entry " + i + "</h3>");
+
+            out.println("<p>This is a modern session-based diary application using Servlet and HttpSession technology.</p>");
+
+            if (username != null) {
+                out.println("<button class='delete-btn'>Delete</button>");
+            }
+
+            out.println("</div>");
+        }
 
         out.println("</div>");
         out.println("</div>");
