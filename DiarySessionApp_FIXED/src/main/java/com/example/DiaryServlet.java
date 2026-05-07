@@ -37,7 +37,7 @@ public class DiaryServlet extends HttpServlet {
 
         // NAVBAR
         out.println("<div class='navbar'>");
-        out.println("<div class='logo'>Smart Diary</div>");
+        out.println("<div class='logo'>My Diary</div>");
 
         out.println("<div class='user-area'>");
 
