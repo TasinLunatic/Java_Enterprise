@@ -1,4 +1,10 @@
-package com.example.cart;
+// ShoppingCartServlet.java
+// Tomcat 10+ uses jakarta.servlet package
+
+package com.shopping;
+
+import java.io.IOException;
+import java.io.PrintWriter;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -6,139 +12,62 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-
 @WebServlet("/cart")
 public class ShoppingCartServlet extends HttpServlet {
-
-    static class Product {
-
-        String name;
-        int price;
-        int number;
-
-        public Product(String name, int price, int number) {
-            this.name = name;
-            this.price = price;
-            this.number = number;
-        }
-
-        public int subtotal() {
-            return price * number;
-        }
-    }
-
-    private static final List<Product> cart = new ArrayList<>();
-
-    @Override
-    public void init() {
-
-        if (cart.isEmpty()) {
-
-            cart.add(new Product("cola", 3, 10));
-            cart.add(new Product("chips", 6, 8));
-
-        }
-    }
 
     @Override
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response)
             throws ServletException, IOException {
 
-        String deleteIndex = request.getParameter("delete");
-
-        if (deleteIndex != null) {
-
-            int index = Integer.parseInt(deleteIndex);
-
-            if (index >= 0 && index < cart.size()) {
-                cart.remove(index);
-            }
-        }
-
         response.setContentType("text/html;charset=UTF-8");
-
-        int total = compute(cart);
 
         PrintWriter out = response.getWriter();
 
-        out.println("<!DOCTYPE html>");
-        out.println("<html>");
+        out.println("""
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Servlet Running</title>
 
-        out.println("<head>");
-        out.println("<meta charset='UTF-8'>");
-        out.println("<title>Shopping Cart</title>");
-        out.println("<link rel='stylesheet' href='css/style.css'>");
-        out.println("</head>");
+                    <style>
 
-        out.println("<body>");
+                        body{
+                            font-family: Arial;
+                            background:#f4f6f9;
+                            text-align:center;
+                            padding-top:100px;
+                        }
 
-        out.println("<div class='cart-container'>");
+                        .box{
+                            background:white;
+                            width:400px;
+                            margin:auto;
+                            padding:40px;
+                            border-radius:10px;
+                            box-shadow:0 0 10px rgba(0,0,0,0.1);
+                        }
 
-        out.println("<div class='cart-card'>");
+                        h1{
+                            color:#3498db;
+                        }
 
-        out.println("<h1>🛒 Shopping Cart</h1>");
+                    </style>
 
-        out.println("<p class='subtitle'>Modern Shopping Cart System</p>");
+                </head>
 
-        out.println("<table>");
+                <body>
 
-        out.println("<tr>");
-        out.println("<th>Product</th>");
-        out.println("<th>Price</th>");
-        out.println("<th>Quantity</th>");
-        out.println("<th>Subtotal</th>");
-        out.println("<th>Operation</th>");
-        out.println("</tr>");
+                    <div class="box">
 
-        for (int i = 0; i < cart.size(); i++) {
+                        <h1>Shopping Cart Servlet</h1>
 
-            Product p = cart.get(i);
+                        <p>Tomcat 10+ Servlet is running successfully.</p>
 
-            out.println("<tr>");
+                    </div>
 
-            out.println("<td>" + p.name + "</td>");
-            out.println("<td>$" + p.price + "</td>");
-            out.println("<td>" + p.number + "</td>");
-            out.println("<td>$" + p.subtotal() + "</td>");
-
-            out.println("<td>");
-            out.println("<a href='cart?delete=" + i + "'>");
-            out.println("<button>Delete</button>");
-            out.println("</a>");
-            out.println("</td>");
-
-            out.println("</tr>");
-        }
-
-        out.println("</table>");
-
-        out.println("<div class='total-box'>");
-        out.println("<h2>Total Amount: " + total + " yuan</h2>");
-        out.println("</div>");
-
-        out.println("</div>");
-
-        out.println("</div>");
-
-        out.println("</body>");
-        out.println("</html>");
-    }
-
-    private int compute(List<Product> cart) {
-
-        int total = 0;
-
-        for (Product item : cart) {
-
-            total += item.price * item.number;
-
-        }
-
-        return total;
+                </body>
+                </html>
+                """);
     }
 }
