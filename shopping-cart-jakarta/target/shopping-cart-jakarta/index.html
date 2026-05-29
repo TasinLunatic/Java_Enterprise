@@ -1,34 +1,126 @@
 <!DOCTYPE html>
+<html lang="en">
 
 <head>
 
     <meta charset="UTF-8">
 
-    <title>Shopping Cart Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/style.css">
+    <title>Modern Shopping Cart</title>
+
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<div class="container">
+<div class="cart-container">
 
-    <div class="card">
+    <div class="cart-card">
+
+        <div class="cart-icon">
+            🛒
+        </div>
 
         <h1>Shopping Cart</h1>
 
-        <p>
-            Welcome to the Shopping Cart Management System
+        <p class="subtitle">
+            Review your products and total amount
         </p>
 
+        <table>
 
-        <a href="cart">
-            <button>Open Shopping Cart</button>
-        </a>
+            <tr>
+
+                <th>Product</th>
+                <th>Price (yuan)</th>
+                <th>Quantity</th>
+                <th>Subtotal (yuan)</th>
+                <th>Operation</th>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    <div class="product-info">
+
+                        <div class="emoji">🥤</div>
+
+                        <div>
+                            <strong>cola</strong>
+                            <p class="desc">Refreshing drink</p>
+                        </div>
+
+                    </div>
+                </td>
+
+                <td>3</td>
+
+                <td>10</td>
+
+                <td class="subtotal">30</td>
+
+                <td>
+                    <button class="delete-btn">
+                        Delete
+                    </button>
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    <div class="product-info">
+
+                        <div class="emoji">🍟</div>
+
+                        <div>
+                            <strong>chips</strong>
+                            <p class="desc">Crispy and tasty</p>
+                        </div>
+
+                    </div>
+                </td>
+
+                <td>6</td>
+
+                <td>8</td>
+
+                <td class="subtotal">48</td>
+
+                <td>
+                    <button class="delete-btn">
+                        Delete
+                    </button>
+                </td>
+
+            </tr>
+
+        </table>
+
+        <div class="total-box">
+
+            <div class="total-left">
+                💵 Total Amount:
+            </div>
+
+            <div class="total-right">
+                78 yuan
+            </div>
+
+        </div>
+
+        <div class="footer-text">
+            ❤️ Thank you for shopping with us! ❤️
+        </div>
 
     </div>
 
 </div>
 
 </body>
+
+</html>

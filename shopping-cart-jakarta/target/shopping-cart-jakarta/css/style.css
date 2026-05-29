@@ -1,4 +1,4 @@
-/* Full Page */
+/* Body */
 
 body {
 
@@ -7,9 +7,9 @@ body {
 
     font-family: Arial, sans-serif;
 
-    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+    background: linear-gradient(135deg, #dbeafe, #f3e8ff);
 
-    height: 100vh;
+    min-height: 100vh;
 
     display: flex;
     justify-content: center;
@@ -18,101 +18,225 @@ body {
 
 /* Main Container */
 
-.container {
+.cart-container {
 
     width: 100%;
+
     display: flex;
     justify-content: center;
     align-items: center;
 
+    padding: 40px;
 }
 
-/* Card Design */
+/* Card */
 
-.card {
+.cart-card {
+
+    width: 1000px;
 
     background-color: white;
 
-    width: 500px;
+    border-radius: 25px;
 
     padding: 40px;
 
-    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 
     text-align: center;
-
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-
-    animation: fadeIn 1s ease;
 }
 
-/* Main Title */
+/* Cart Icon */
 
-h1 {
+.cart-icon {
 
-    color: #2c3e50;
-
-    margin-bottom: 20px;
-
-    font-size: 32px;
-}
-
-/* Paragraph */
-
-p {
-
-    font-size: 18px;
-
-    color: #555;
+    font-size: 60px;
 
     margin-bottom: 15px;
 }
 
-/* Button */
+/* Heading */
 
-button {
+h1 {
 
-    background-color: #3498db;
+    font-size: 50px;
+
+    color: #1e293b;
+
+    margin-bottom: 10px;
+}
+
+/* Subtitle */
+
+.subtitle {
+
+    color: gray;
+
+    font-size: 20px;
+
+    margin-bottom: 40px;
+}
+
+/* Table */
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    overflow: hidden;
+
+    border-radius: 15px;
+}
+
+/* Table Header */
+
+th {
+
+    background: linear-gradient(90deg, #4f46e5, #3b82f6);
+
+    color: white;
+
+    padding: 18px;
+
+    font-size: 18px;
+}
+
+/* Table Data */
+
+td {
+
+    padding: 25px;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    font-size: 18px;
+}
+
+/* Hover Effect */
+
+tr:hover {
+
+    background-color: #f8fafc;
+}
+
+/* Product Info */
+
+.product-info {
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Emoji */
+
+.emoji {
+
+    font-size: 40px;
+}
+
+/* Description */
+
+.desc {
+
+    margin: 5px 0 0 0;
+
+    color: gray;
+
+    font-size: 14px;
+}
+
+/* Subtotal */
+
+.subtotal {
+
+    color: #2563eb;
+
+    font-weight: bold;
+
+    font-size: 22px;
+}
+
+/* Delete Button */
+
+.delete-btn {
+
+    background: linear-gradient(90deg, #ef4444, #f87171);
 
     color: white;
 
     border: none;
 
-    padding: 14px 28px;
+    padding: 12px 22px;
 
-    font-size: 16px;
-
-    border-radius: 8px;
+    border-radius: 10px;
 
     cursor: pointer;
+
+    font-size: 16px;
 
     transition: 0.3s;
 }
 
-/* Hover Effect */
+/* Hover */
 
-button:hover {
-
-    background-color: #2980b9;
+.delete-btn:hover {
 
     transform: scale(1.05);
+
+    opacity: 0.9;
 }
 
-/* Animation */
+/* Total Box */
 
-@keyframes fadeIn {
+.total-box {
 
-    from {
+    margin-top: 35px;
 
-        opacity: 0;
-        transform: translateY(20px);
+    background-color: #f0fdf4;
 
-    }
+    border: 2px solid #bbf7d0;
 
-    to {
+    border-radius: 18px;
 
-        opacity: 1;
-        transform: translateY(0);
+    padding: 25px;
 
-    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Total Left */
+
+.total-left {
+
+    font-size: 28px;
+
+    color: #15803d;
+
+    font-weight: bold;
+}
+
+/* Total Right */
+
+.total-right {
+
+    font-size: 38px;
+
+    color: #16a34a;
+
+    font-weight: bold;
+}
+
+/* Footer */
+
+.footer-text {
+
+    margin-top: 35px;
+
+    color: #6366f1;
+
+    font-size: 20px;
 }

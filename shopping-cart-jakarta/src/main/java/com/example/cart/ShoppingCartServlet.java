@@ -1,4 +1,3 @@
-
 package com.example.cart;
 
 import jakarta.servlet.ServletException;
@@ -15,7 +14,6 @@ import java.util.List;
 @WebServlet("/cart")
 public class ShoppingCartServlet extends HttpServlet {
 
-    // Product class
     static class Product {
 
         String name;
@@ -33,10 +31,8 @@ public class ShoppingCartServlet extends HttpServlet {
         }
     }
 
-    // Shopping cart list
     private static final List<Product> cart = new ArrayList<>();
 
-    // Add products once
     @Override
     public void init() {
 
@@ -53,7 +49,6 @@ public class ShoppingCartServlet extends HttpServlet {
                          HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Delete product
         String deleteIndex = request.getParameter("delete");
 
         if (deleteIndex != null) {
@@ -71,7 +66,6 @@ public class ShoppingCartServlet extends HttpServlet {
 
         PrintWriter out = response.getWriter();
 
-        // HTML Start
         out.println("<!DOCTYPE html>");
         out.println("<html>");
 
@@ -83,7 +77,13 @@ public class ShoppingCartServlet extends HttpServlet {
 
         out.println("<body>");
 
-        out.println("<h1>Shopping Cart</h1>");
+        out.println("<div class='cart-container'>");
+
+        out.println("<div class='cart-card'>");
+
+        out.println("<h1>🛒 Shopping Cart</h1>");
+
+        out.println("<p class='subtitle'>Modern Shopping Cart System</p>");
 
         out.println("<table>");
 
@@ -95,7 +95,6 @@ public class ShoppingCartServlet extends HttpServlet {
         out.println("<th>Operation</th>");
         out.println("</tr>");
 
-        // Display products
         for (int i = 0; i < cart.size(); i++) {
 
             Product p = cart.get(i);
@@ -103,9 +102,9 @@ public class ShoppingCartServlet extends HttpServlet {
             out.println("<tr>");
 
             out.println("<td>" + p.name + "</td>");
-            out.println("<td>" + p.price + "</td>");
+            out.println("<td>$" + p.price + "</td>");
             out.println("<td>" + p.number + "</td>");
-            out.println("<td>" + p.subtotal() + "</td>");
+            out.println("<td>$" + p.subtotal() + "</td>");
 
             out.println("<td>");
             out.println("<a href='cart?delete=" + i + "'>");
@@ -118,13 +117,18 @@ public class ShoppingCartServlet extends HttpServlet {
 
         out.println("</table>");
 
-        out.println("<h2>Total amount: " + total + " yuan</h2>");
+        out.println("<div class='total-box'>");
+        out.println("<h2>Total Amount: " + total + " yuan</h2>");
+        out.println("</div>");
+
+        out.println("</div>");
+
+        out.println("</div>");
 
         out.println("</body>");
         out.println("</html>");
     }
 
-    // Compute total
     private int compute(List<Product> cart) {
 
         int total = 0;
@@ -138,4 +142,3 @@ public class ShoppingCartServlet extends HttpServlet {
         return total;
     }
 }
-
